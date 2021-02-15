@@ -31,8 +31,8 @@ def scrape():
         find('li', class_='slide').\
         find('div', class_='article_teaser_body').text
 
-    scrape_data['Mars News Title'] = news_title
-    scrape_data['Mars News Text'] = news_p
+    scrape_data['news_title'] = news_title
+    scrape_data['news_text'] = news_p
 
     #### JPL Mars Space Images - Featured Image ####
 
@@ -56,7 +56,7 @@ def scrape():
     # Grab original image URL
     featured_image_url = soup.find('div', class_='BaseLightbox__slide__img').img['src']
 
-    scrape_data['JPL Featured Mars Image'] = featured_image_url
+    scrape_data['jpl_image'] = featured_image_url
 
 
     #### Mars Facts ####
@@ -68,7 +68,7 @@ def scrape():
     #convert to HTML table
     mars_facts_html_table = df.to_html()
 
-    scrape_data['Mars Facts Table HTML'] = mars_facts_html_table
+    scrape_data['facts_table'] = mars_facts_html_table
 
 
     #### Mars Hemispheres ####
@@ -99,7 +99,7 @@ def scrape():
         hemisphere_image_urls.append(hemisphere_dict)
         browser.back()
 
-    scrape_data['Hemisphere Images'] = hemisphere_image_urls
+    scrape_data['hemisphere_images'] = hemisphere_image_urls
 
     browser.quit()
 
